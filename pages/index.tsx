@@ -69,6 +69,7 @@ const Home: NextPage = ({ body }: any) => {
                             <a
                                 href={`https://open.spotify.com/track/${data.spotify.track_id}`}
                                 target="_blank"
+                                rel="noreferrer"
                                 className="text-xl text-white font-semibold"
                             >
                                 {data.spotify.song}
