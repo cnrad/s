@@ -1,3 +1,5 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable @next/next/no-img-element */
 import type { NextPage } from "next";
 import Head from "next/head";
 import { useState, useEffect } from "react";
@@ -56,15 +58,33 @@ const Home: NextPage = ({ body }: any) => {
                 <title>
                     Listening to: {data.spotify.song} by {data.spotify.artist}{" "}
                 </title>
+                <meta name="theme-color" content="#1DB954" />
+
+                <meta name="og:title" content={`s.cnrad.dev`} />
+                <meta
+                    name="og:description"
+                    content={`Conrad is currently listening to ${
+                        data.spotify.song ? data.spotify.song + " by " + data.spotify.artist : "nothing"
+                    }`}
+                />
+                <meta name="og:image" content={data.spotify.album_art_url} />
             </Head>
             <div className="absolute w-[100vw] h-[100vh] overflow-hidden opacity-80 z-[10] flex items-center justify-center">
-                <img className="w-[100vw] blur-2xl z-[10]" src={data.spotify.album_art_url} />
+                <img
+                    className="w-[100vw] blur-2xl z-[10]"
+                    src={data.spotify.album_art_url}
+                    alt="Album art but blurred"
+                />
             </div>
 
             <div className="absolute w-[100vw] h-[100vh] flex items-center justify-center text-white z-[20]">
                 <div className="p-8 w-[33rem] bg-[#000] bg-opacity-60 rounded-lg flex flex-col items-center justify-start font-karla">
                     <div className="w-full flex flex-row items-center justify-start mb-6">
-                        <img src={data.spotify.album_art_url} className="w-[8rem] h-[8rem] rounded-md" />
+                        <img
+                            src={data.spotify.album_art_url}
+                            className="w-[8rem] h-[8rem] rounded-md"
+                            alt="Album Art"
+                        />
                         <div className="ml-6 flex flex-col items-start justify-center">
                             <a
                                 href={`https://open.spotify.com/track/${data.spotify.track_id}`}
