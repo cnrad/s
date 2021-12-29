@@ -16,13 +16,6 @@ const Home: NextPage = ({ body }: any) => {
     const [second, addSecond] = useState(0);
     let count = 0;
 
-    if (data.spotify === null)
-        return (
-            <div className="w-[100vw] h-[100vh] flex items-center justify-center text-white">
-                Not listening to anything right now :(
-            </div>
-        );
-
     // This is a really stupid workaround but I render an unused state every second to update the rest of the data lol theres def a better way to do this but i cba
     const updateData = (newData: any) => {
         addSecond(count++);
@@ -42,6 +35,13 @@ const Home: NextPage = ({ body }: any) => {
             if (newBody.data.spotify !== data.spotify) setData(newBody.data);
         }, 4000);
     }, []);
+
+    if (data.spotify === null)
+        return (
+            <div className="w-[100vw] h-[100vh] flex items-center justify-center text-white">
+                Not listening to anything right now :(
+            </div>
+        );
 
     function fromMS(ms: number) {
         const totalSeconds = ms / 1000;
